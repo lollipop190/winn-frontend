@@ -19,7 +19,7 @@ import FundList from './FundList'
 import InfoBar from './InfoBar'
 
 export default {
-    name: 'HomePage',
+    name: 'Home',
     data: function () {
         return {
             accountButton: new AccountButton(),
