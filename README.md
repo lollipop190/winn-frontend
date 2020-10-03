@@ -1,6 +1,11 @@
 # winn-frontend
 
 > 2020citicup
+> source codes are saved in src/components
+> Account.vue
+> Details.vue
+> Home.vue
+> Login.vue
 
 ## Build Setup
 
