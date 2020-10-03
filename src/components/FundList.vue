@@ -24,13 +24,15 @@ function getFunds() {
 }
 
 export default {
+    name: 'fund-list',
+
     data: function () {
         return {
             funds: []
         }
     },
 
-    init: function () {
+    created: function () {
         getFunds().then((fundList) => (funds = fundList))
     }
 }

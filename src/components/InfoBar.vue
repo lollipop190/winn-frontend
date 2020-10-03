@@ -5,4 +5,10 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'info-bar'
+}
+</script>
+
 <style scoped></style>

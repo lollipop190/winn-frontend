@@ -14,6 +14,8 @@ function getUserProfile() {
 }
 
 export default {
+    name: 'account-button',
+
     data: function () {
         return {
             userProfile: null
@@ -22,14 +24,14 @@ export default {
 
     computed: {
         buttonText: function () {
-            return userProfile
+            return this.userProfile === null
                 ? '登录 / 注册'
-                : userProfile.firstName + userProfile.lastName
+                : this.userProfile.firstName + this.userProfile.lastName
             // TODO try to get account name from the server, if failed, show 'login/register'
         }
     },
 
-    init: function () {
+    created: function () {
         getUserProfile().then((jsonData) => (userProfile = jsonData))
     }
 }

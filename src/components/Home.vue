@@ -2,13 +2,13 @@
 <template>
     <div>
         <header>
-            {{ accountButton }}
+            <account-button></account-button>
         </header>
         <main>
-            {{ fundList }}
+            <fund-list></fund-list>
         </main>
         <footer>
-            {{ infoBar }}
+            <info-bar></info-bar>
         </footer>
     </div>
 </template>
@@ -19,13 +19,11 @@ import FundList from './FundList'
 import InfoBar from './InfoBar'
 
 export default {
-    name: 'Home',
-    data: function () {
-        return {
-            accountButton: new AccountButton(),
-            fundList: new FundList(),
-            infoBar: new InfoBar()
-        }
+    name: 'home',
+    components: {
+        AccountButton,
+        FundList,
+        InfoBar
     }
 }
 </script>

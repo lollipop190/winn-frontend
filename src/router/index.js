@@ -10,22 +10,26 @@ import Account from '../components/Account'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/home',
-      component: Home
-    },
-    {
-      path: '/login',
-      component: Login
-    },
-    {
-      path: '/details',
-      component: Details
-    },
-    {
-      path: '/account',
-      component: Account
-    }
-  ]
+    routes: [
+        {
+            path: '/home',
+            component: Home
+        },
+        {
+            path: '/login',
+            component: Login
+        },
+        {
+            path: '/details',
+            component: Details
+        },
+        {
+            path: '/account',
+            component: Account
+        },
+        {
+            path: '*',
+            redirect: '/home'
+        }
+    ]
 })
