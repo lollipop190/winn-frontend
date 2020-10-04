@@ -1,34 +1,36 @@
 <!-- home page -->
 <template>
-    <div>
-        <header class="loginBtn">
-            <account-button></account-button>
-        </header>
+    <div class="global">
+        <header-bar class="headerBar">
+        </header-bar>
         <main>
             <fund-list></fund-list>
         </main>
-        <footer>
+        <footer class="homefooter">
             <info-bar></info-bar>
         </footer>
     </div>
 </template>
 
 <script>
-import AccountButton from './AccountButton'
 import FundList from './FundList'
 import InfoBar from './InfoBar'
+import HeaderBar from './HeaderBar'
 
 export default {
     name: 'home',
     components: {
-        AccountButton,
         FundList,
-        InfoBar
+        InfoBar,
+        HeaderBar
     }
 }
 </script>
 
 <style scoped>
+  .global {
+    background-color: #F8F8F9;
+  }
   .clearfix:before, .clearfix:after {
     content: "";
     display: table;
@@ -39,10 +41,12 @@ export default {
   .clearfix {
     *zoom: 1;
   }
-  .loginBtn {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
+  .headerBar {
+    top: 0px;
+  }
+  .homefooter {  /* Don't change this. */
+    color: #757575;
+    width: 400px;
+    margin: 40px auto 15px;
   }
 </style>

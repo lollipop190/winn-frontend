@@ -2,14 +2,17 @@
 <template>
   <ol class="fund-list">
     <li v-for="fund in funds" :key="fund.name">
-      <div>
-        <span class="fund-name">
-          {{ fund.name }}
-        </span>
-        <span class="fund-industry">
-          {{ fund.industry }}
-        </span>
-      </div>
+      <a href="#">  <!-- Todo -->
+        <Card class="fund-card">
+          <p slot="title" class="fund-name">{{ fund.name }}</p>
+          <!-- 统计图 -->
+          <div class="fund-statistics">
+          </div>
+          <div class="fund-industry">
+            {{ fund.industry }}
+          </div>
+        </Card>
+      </a>
     </li>
   </ol>
 </template>
@@ -47,4 +50,28 @@ export default {
 </script>
 
 <style scoped>
+  .fund-card {
+    padding: 0;
+    margin: 25px auto;
+    width: 800px;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+  }
+  .fund-name {
+    font-size: 18px;
+  }
+  .fund-industry {
+    color: coral;
+  }
+  .fund-statistics {
+    height: 400px;
+    width: 700px;
+    margin: 0 auto 15px;
+    border: 2px solid #DCDEE2;
+  }
+  ol li a {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
 </style>

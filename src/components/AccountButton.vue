@@ -1,9 +1,9 @@
 <!-- an account button component, displayed in homepage and fund detail page -->
 
 <template>
-  <button v-on:click="handleClick">
+  <Button v-on:click="handleClick">
     {{ buttonText }}
-  </button>
+  </Button>
 </template>
 
 <script>
