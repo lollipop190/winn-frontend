@@ -53,25 +53,26 @@ export default {
   .fund-card {
     padding: 0;
     margin: 25px auto;
-    width: 800px;
-    background-color: #F5F5F5;
+    background-color: #F7F7F7;
     border-radius: 15px;
   }
   .fund-name {
     font-size: 18px;
   }
   .fund-industry {
-    color: coral;
+    font-size: 15px;
+    color: royalblue;
   }
   .fund-statistics {
     height: 400px;
     width: 700px;
     margin: 0 auto 15px;
-    border: 2px solid #DCDEE2;
+    border: 2px solid #EAECEF;
   }
   ol li a {
     display: block;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    width: 800px;
   }
 </style>
