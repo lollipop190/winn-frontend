@@ -19,9 +19,16 @@ import { v4 as uuid } from 'uuid'
 
 async function getFunds() {
   const apiPath = '/api/v1/fund/list'
-  return fetch(apiPath, { headers: { Uuid: uuid() } }).then((resp) =>
-    resp.json()
-  )
+  return fetch(apiPath, { headers: { Uuid: uuid() } })
+    .then((resp) => resp.json())
+    .then((obj) => obj.fundList)
+}
+
+// use dummy
+import testData from '../dummy/fundList.json'
+getFunds = async function () {
+  console.log(testData.fundList)
+  return testData.fundList
 }
 
 export default {

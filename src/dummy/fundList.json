@@ -1,0 +1,19 @@
+{
+  "fundList": [
+    {
+      "name": "银河创新成长混合",
+      "industry": "量子通信",
+      "uuid": "4fcc9201-37fb-43e2-ab4a-d637acb01bc0"
+    },
+    {
+      "name": "诺安成长混合",
+      "industry": "智慧城市",
+      "uuid": "c508b46d-535f-4a13-bbc5-b0932579e9dc"
+    },
+    {
+      "name": "广发双擎升级混合A",
+      "industry": "在线教育",
+      "uuid": "ec189761-5cf2-4533-b450-1316db73dde8"
+    }
+  ]
+}
