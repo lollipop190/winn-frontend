@@ -1,16 +1,16 @@
 <!-- home page -->
 <template>
-    <div>
-        <header>
-            <account-button></account-button>
-        </header>
-        <main>
-            <fund-list></fund-list>
-        </main>
-        <footer>
-            <info-bar></info-bar>
-        </footer>
-    </div>
+  <div>
+    <header>
+      <account-button></account-button>
+    </header>
+    <main>
+      <fund-list></fund-list>
+    </main>
+    <footer>
+      <info-bar></info-bar>
+    </footer>
+  </div>
 </template>
 
 <script>
@@ -19,12 +19,12 @@ import FundList from './FundList'
 import InfoBar from './InfoBar'
 
 export default {
-    name: 'home',
-    components: {
-        AccountButton,
-        FundList,
-        InfoBar
-    }
+  name: 'home',
+  components: {
+    AccountButton,
+    FundList,
+    InfoBar
+  }
 }
 </script>
 
