@@ -7,6 +7,9 @@
 * Home.vue  
 * Login.vue  
 
+## Tips
+ 我们只需要写vue文件即可，html是不需要写的。
+
 ## Build Setup
 
 ``` bash
