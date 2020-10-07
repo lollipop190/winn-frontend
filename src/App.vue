@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <Account/>
   </div>
 </template>
 
 <script>
+  import Account from './components/AccountComps/Account.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    Account
+  }
 }
 </script>
 

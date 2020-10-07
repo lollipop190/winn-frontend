@@ -1,7 +1,17 @@
 # winn-frontend
 
-> 2020citicup
+2020citicup
+=======
+2020citicup  
+source codes are saved in src/components  
 
+* Account.vue  
+* Details.vue  
+* Home.vue  
+* Login.vue  
+
+## Tips
+ 我们只需要写vue文件即可，html是不需要写的。
 ## Build Setup
 
 ``` bash
@@ -28,8 +38,6 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
 
 ### View UI 插件引入.
 
