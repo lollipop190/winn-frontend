@@ -1,7 +1,7 @@
 <!-- an account button component, displayed in homepage and fund detail page -->
 
 <template>
-  <Button v-on:click="handleClick">
+  <Button v-on:click="handleClick" type="text">
     {{ buttonText }}
   </Button>
 </template>
@@ -47,4 +47,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+  Button {
+    color: #F7F7F7;
+  }
+</style>

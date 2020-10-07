@@ -56,6 +56,9 @@ export default {
     background-color: #F7F7F7;
     border-radius: 15px;
   }
+  .fund-list {
+    list-style: none;
+  }
   .fund-name {
     font-size: 18px;
   }

@@ -28,3 +28,23 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+
+### View UI 插件引入.
+
+如果您想要看到这个插件的效果，您需要：
+
+```bash
+# install view UI
+npm install view-design --save
+```
+
+更多插件必备配置在这个版本已经实现。
+
+配合此插件已修改的文件有：
+
+```
+src/main.js
+```
+

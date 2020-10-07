@@ -42,7 +42,7 @@ export default {
     *zoom: 1;
   }
   .headerBar {
-    top: 0px;
+    background-color: #2d8cf0;
   }
   .homefooter {  /* Don't change this. */
     color: #757575;
