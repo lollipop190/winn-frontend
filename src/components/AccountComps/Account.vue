@@ -29,32 +29,19 @@
       </div>
       <div id="citi-account">
         <label>花旗账号:</label>
-        <button v-show="!isBinded">去绑定</button>
-        <span v-show="isBinded">{{citiAccount}}</span>
-
+        <button v-if="!isBinded" v-on:click="displayPartsForBind">去绑定</button>
+        <span v-if="isBinded">{{citiAccount}}</span>
+        <div v-if="bindPartDisplayed">
+          此处为花旗用户绑定
+          <button v-on:click="hidePartsAndSetBinded">确认</button>
+        </div>
       </div>
-
     </form>
   </div>
-
 </template>
-
 <script>
-  // import axios from 'axios'
-  // axios({
-  //   url:'http://123.207.32.32:8000/home/multidata',
-  //   method: 'get'//也可以传递post
-  // }).then(res =>{
-  //   console.log(res)
-  // })
-
-//上面的请求数据已被封装
-  import {getAccountInfo} from '../../network/Account'
-
-
-
-
-
+//请求数据已被封装
+  import {getAccountInfo, bindCitiAccount} from '../../network/Account'
   export default {
     name: 'Account',
     data(){
@@ -68,7 +55,8 @@
         address: '163 xinlin road',
         cardInfo : 'ABC',
         citiAccount : 'citi',
-        isBinded: false //判断是否绑定了花旗账户
+        isBinded: false, //判断是否绑定了花旗账户
+        bindPartDisplayed: false
       }
     },
     created () {
@@ -76,11 +64,18 @@
       //todo 设置url
       getAccountInfo().then(res =>{
         this.result = res;
+        //todo: set data
       })
     },
     methods:{
-      getInfo(){
-        //通过api获取账户信息
+      displayPartsForBind() {
+        this.bindPartDisplayed = true;
+      },
+      hidePartsAndSetBinded(){
+        this.bindPartDisplayed = false;
+        this.isBinded = true;
+        //todo 获取用户输入的花旗用户数据
+        bindCitiAccount("citi account");
       }
     }
   }

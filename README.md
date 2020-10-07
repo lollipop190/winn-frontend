@@ -2,7 +2,7 @@
 
 > 2020citicup
 > source codes are saved in src/components
-* Account.vue
+* Account.vue (now in src/components/AccountComps)
 * Details.vue
 * Home.vue
 * Login.vue

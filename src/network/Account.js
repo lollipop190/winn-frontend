@@ -5,3 +5,10 @@ export function getAccountInfo () {
       url: apiPath
     })
 }
+export function bindCitiAccount (data) {
+  return request({
+    url: 'api/account/bind',
+    method: 'post',
+    //todo update data
+  })
+}
