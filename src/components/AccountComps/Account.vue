@@ -40,10 +40,26 @@
 </template>
 
 <script>
+  // import axios from 'axios'
+  // axios({
+  //   url:'http://123.207.32.32:8000/home/multidata',
+  //   method: 'get'//也可以传递post
+  // }).then(res =>{
+  //   console.log(res)
+  // })
+
+//上面的请求数据已被封装
+  import {getAccountInfo} from '../../network/Account'
+
+
+
+
+
   export default {
     name: 'Account',
     data(){
       return {
+        result : null,
         //for test
         firstName : '张',
         lastName : '潮越',
@@ -54,6 +70,13 @@
         citiAccount : 'citi',
         isBinded: false //判断是否绑定了花旗账户
       }
+    },
+    created () {
+      //请求多个数据
+      //todo 设置url
+      getAccountInfo().then(res =>{
+        this.result = res;
+      })
     },
     methods:{
       getInfo(){
