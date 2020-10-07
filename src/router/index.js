@@ -5,7 +5,7 @@ import Router from 'vue-router'
 import Home from  '../components/Home'
 import Login from '../components/Login'
 import Details from '../components/Details'
-import Account from '../components/Account'
+import Account from '../components/AccountComps/Account'
 
 Vue.use(Router)
 
