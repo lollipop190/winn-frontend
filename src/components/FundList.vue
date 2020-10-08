@@ -2,12 +2,12 @@
 <template>
   <ol class="fund-list">
     <li v-for="fund in funds" :key="fund.name">
-      <a href="#">  <!-- Todo -->
+      <a href="#">
+        <!-- Todo -->
         <Card class="fund-card">
           <p slot="title" class="fund-name">{{ fund.name }}</p>
           <!-- 统计图 -->
-          <div class="fund-statistics">
-          </div>
+          <div class="fund-statistics"></div>
           <div class="fund-industry">
             {{ fund.industry }}
           </div>
@@ -50,32 +50,32 @@ export default {
 </script>
 
 <style scoped>
-  .fund-card {
-    padding: 0;
-    margin: 25px auto;
-    background-color: #F7F7F7;
-    border-radius: 15px;
-  }
-  .fund-list {
-    list-style: none;
-  }
-  .fund-name {
-    font-size: 18px;
-  }
-  .fund-industry {
-    font-size: 15px;
-    color: royalblue;
-  }
-  .fund-statistics {
-    height: 400px;
-    width: 700px;
-    margin: 0 auto 15px;
-    border: 2px solid #EAECEF;
-  }
-  ol li a {
-    display: block;
-    padding: 0;
-    margin: 0 auto;
-    width: 800px;
-  }
+.fund-card {
+  padding: 0;
+  margin: 25px auto;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+}
+.fund-list {
+  list-style: none;
+}
+.fund-name {
+  font-size: 18px;
+}
+.fund-industry {
+  font-size: 15px;
+  color: royalblue;
+}
+.fund-statistics {
+  height: 400px;
+  width: 700px;
+  margin: 0 auto 15px;
+  border: 2px solid #eaecef;
+}
+ol li a {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  width: 800px;
+}
 </style>
