@@ -1,12 +1,7 @@
 {
-
-      firstName: '张',
-      lastName: '潮越',
-      phoneNumber: '123',
-      email: '@example',
-      address: '163 xinlin road',
-      cardInfo: 'ABC',
-      citiAccount: 'citi',
-      isBinded: false, // 判断是否绑定了花旗账户
-      bindPartDisplayed: false
+  "firstName": "zg",
+  "lastName": "c",
+  "email": "whoknows@example.com",
+  "password": "xyz",
+  "address": "163 Xianlin Road, Qixia District, Nanjing, Jiangsu Province"
 }

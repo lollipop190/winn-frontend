@@ -10,10 +10,6 @@
         <label>名:</label>
         <span>{{ lastName }}</span>
       </div>
-      <div id="phone-number">
-        <label>手机号:</label>
-        <span>{{ phoneNumber }}</span>
-      </div>
       <div id="email">
         <label>电子邮箱:</label>
         <span>{{ email }}</span>
@@ -21,10 +17,6 @@
       <div id="address">
         <label>地址:</label>
         <span>{{ address }}</span>
-      </div>
-      <div id="card-info">
-        <label>银行卡信息:</label>
-        <span>{{ cardInfo }}</span>
       </div>
       <div id="citi-account">
         <label>花旗账号:</label>
@@ -40,32 +32,37 @@
     </form>
   </div>
 </template>
+
 <script>
 // 请求数据已被封装
 import { getAccountInfo, bindCitiAccount } from '../network/Account'
+
+import dummyAccount from '../dummy/accountInfo.json'
+async function getDummyInfo() {
+  return dummyAccount
+}
+
 export default {
   name: 'Account',
   data: function () {
     return {
-      result: null,
-      // for test
-      firstName: '张',
-      lastName: '潮越',
-      phoneNumber: '123',
-      email: '@example',
-      address: '163 xinlin road',
-      cardInfo: 'ABC',
-      citiAccount: 'citi',
-      isBinded: false, // 判断是否绑定了花旗账户
+      firstName: null,
+      lastName: null,
+      email: null,
+      address: null,
+      citiAccount: null,
       bindPartDisplayed: false
     }
   },
   created: function () {
     // 请求多个数据
     // todo 设置url
-    getAccountInfo().then((res) => {
-      this.result = res
-      // todo: set data
+    getDummyInfo().then((res) => {
+      for (let prop in res) {
+        if (res.hasOwnProperty(prop)) {
+          this[prop] = res[prop]
+        }
+      }
     })
   },
   methods: {
