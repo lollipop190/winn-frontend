@@ -2,7 +2,7 @@
 <template>
   <ol class="fund-list">
     <li v-for="fund in funds" :key="fund.name">
-      <a href="#">
+      <a>
         <!-- Todo -->
         <Card class="fund-card">
           <p slot="title" class="fund-name">{{ fund.name }}</p>
@@ -61,10 +61,12 @@ export default {
 }
 .fund-name {
   font-size: 18px;
+  text-align: center;
 }
 .fund-industry {
   font-size: 15px;
   color: royalblue;
+  text-align: center;
 }
 .fund-statistics {
   height: 400px;

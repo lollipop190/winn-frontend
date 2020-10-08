@@ -23,6 +23,7 @@ export default {
 .head {
   position: relative;
   margin-bottom: 20px;
+  background-color: #2d8cf0;
 }
 .login {
   position: absolute;
