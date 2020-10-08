@@ -3,33 +3,51 @@
     <h2>账户信息</h2>
     <Button v-on:click="tableShow">test-show</Button>
     <form>
-      <Table
-        stripe
-        border
-        :show-header="noheader"
-        :columns="tbcolumns"
-        :data="tbdata"
-        class="tb">
-        <template slot-scope="{ row }" slot="c1">
-            <strong style="color: #035bc6;">{{ row.c1 }}</strong>
-        </template>
-        <template slot-scope="{ row }" slot="c3">
-            <strong style="color: #035bc6;">{{ row.c3 }}</strong>
-        </template>
-        <template slot-scope="{ row }" slot="c5">
-            <strong style="color: #035bc6;">{{ row.c5 }}</strong>
-        </template>
-      </Table>
+      <div id="first-name">
+        <label>姓:</label>
+        <span>{{firstName}}</span>
+
+      </div>
+      <div id="last-name">
+        <label>名:</label>
+        <span>{{lastName}}</span>
+      </div>
+      <div id="phone-number">
+        <label>手机号:</label>
+        <span>{{phoneNumber}}</span>
+      </div>
+      <div id="email">
+        <label>电子邮箱:</label>
+        <span>{{email}}</span>
+      </div>
+      <div id="address">
+        <label>地址:</label>
+        <span>{{address}}</span>
+      </div>
+      <div id="card-info">
+        <label>银行卡信息:</label>
+        <span>{{cardInfo}}</span>
+      </div>
+      <div id="citi-account">
+        <label>花旗账号:</label>
+        <button v-if="!isBinded" v-on:click="displayPartsForBind">去绑定</button>
+        <span v-if="isBinded">{{citiAccount}}</span>
+        <div v-if="bindPartDisplayed">
+          此处为花旗用户绑定
+          <button v-on:click="hidePartsAndSetBinded">确认</button>
+        </div>
+      </div>
     </form>
   </div>
-
 </template>
-
 <script>
-  export default{
+//请求数据已被封装
+  import {getAccountInfo, bindCitiAccount} from '../../network/Account'
+  export default {
     name: 'Account',
     data(){
       return {
+        result : null,
         //for test
         firstName : '张',
         lastName : '潮越',
@@ -39,72 +57,26 @@
         cardInfo : 'ABC',
         citiAccount : 'citi',
         isBinded: false, //判断是否绑定了花旗账户
-
-        noheader: false,
-        tbcolumns: [
-          {
-            title: 'C1',
-            key: 'c1',
-            width: 100,
-            slot: 'c1'
-          },
-          {
-            title: 'C2',
-            key: 'c2',
-          },
-          {
-            title: 'C3',
-            key: 'c3',
-            width: 90,
-            slot: 'c3'
-          },
-          {
-            title: 'C4',
-            key: 'c4',
-          },
-          {
-            title: 'C5',
-            key: 'c5',
-            width: 120,
-            slot: 'c5'
-          },
-          {
-            title: 'C6',
-            key: 'c6',
-          }
-        ],
-        tbdata: []
+        bindPartDisplayed: false
       }
     },
+    created () {
+      //请求多个数据
+      //todo 设置url
+      getAccountInfo().then(res =>{
+        this.result = res;
+        //todo: set data
+      })
+    },
     methods:{
-      getInfo(){
-        //通过api获取账户信息
+      displayPartsForBind() {
+        this.bindPartDisplayed = true;
       },
-      tableShow() {
-        this.tbdata.push({
-          c1: '姓',
-          c2: this.firstName,
-          c3: '名',
-          c4: this.lastName,
-          c5: '手机号',
-          c6: this.phoneNumber
-        });
-        this.tbdata.push({
-          c1: '电子邮箱',
-          c2: this.email,
-          c3: '地址',
-          c4: this.address,
-          c5: '银行卡信息',
-          c6: this.cardInfo
-        });
-        this.tbdata.push({
-          c1: '花旗账号',
-          c2: this.citiAccount,
-          c3: '',
-          c4: '',
-          c5: '',
-          c6: ''
-        });
+      hidePartsAndSetBinded(){
+        this.bindPartDisplayed = false;
+        this.isBinded = true;
+        //todo 获取用户输入的花旗用户数据
+        bindCitiAccount("citi account");
       }
     },
   }
