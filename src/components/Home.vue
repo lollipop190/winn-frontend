@@ -42,9 +42,7 @@ export default {
   *zoom: 1;
 }
 .headerBar {
-  
 }
 .homefooter {
-  
 }
 </style>

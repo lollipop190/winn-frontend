@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
   <div class="login">
     <header-bar></header-bar>
@@ -8,28 +9,40 @@
         ref="loginform"
         class="loginform"
         :model="loginform"
-        :rules="loginrule">
+        :rules="loginrule"
+      >
         <FormItem prop="user" label="用户名">
-          <Input type="text"
+          <Input
+            type="text"
             v-model="loginform.user"
             placeholder="Username"
             clearable
-            maxlength="20">
+            maxlength="20"
+          >
             <Icon type="ios-person-outline" slot="prepend"></Icon>
           </Input>
         </FormItem>
         <FormItem prop="pw" label="密码">
-          <Input type="password"
+          <Input
+            type="password"
             v-model="loginform.pw"
             placeholder="Password"
             clearable
-            maxlength="20">
+            maxlength="20"
+          >
             <Icon type="ios-lock-outline" slot="prepend"></Icon>
           </Input>
         </FormItem>
         <FormItem>
-          <Button class="btn" type="primary" @click="handleLogin('loginform')">登录</Button>
-          <Button class="btn" type="primary" @click="handleRegister('loginform')">注册</Button>
+          <Button class="btn" type="primary" @click="handleLogin('loginform')"
+            >登录</Button
+          >
+          <Button
+            class="btn"
+            type="primary"
+            @click="handleRegister('loginform')"
+            >注册</Button
+          >
         </FormItem>
       </Form>
     </div>
@@ -42,7 +55,6 @@
 </template>
 
 <script>
-
 import HeaderBar from './HeaderBar'
 import InfoBar from './InfoBar'
 
@@ -59,7 +71,9 @@ export default {
         pw: ''
       },
       loginrule: {
-        user: [{ required: true, message: '用户名不能为空！', trigger: 'blur' }],
+        user: [
+          { required: true, message: '用户名不能为空！', trigger: 'blur' }
+        ],
         pw: [{ required: true, message: '密码不能为空！', trigger: 'blur' }]
       }
     }
@@ -73,21 +87,20 @@ export default {
       console.log('register')
     },
 
-
     // For UI
     handleLogin(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.$Message.success('成功!');
+          this.$Message.success('成功!')
           // Todo: 成功逻辑
-          this.login();
+          this.login()
         } else {
-          this.$Message.error('失败!');
+          this.$Message.error('失败!')
         }
       })
     },
     handleRegister(name) {
-      this.onregist();
+      this.onregist()
     }
   },
   components: {

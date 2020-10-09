@@ -8,13 +8,14 @@
         border
         :columns="tbcolumns"
         :data="tbdata"
-        :show-header="showheader">
+        :show-header="showheader"
+      >
         <template slot-scope="{ row }" slot="c1">
-          <strong style="color: #035bc6;">{{ row.c1 }}</strong>
+          <strong style="color: #035bc6">{{ row.c1 }}</strong>
         </template>
       </Table>
       <div id="citi-account">
-<!--        <label>花旗账号:</label>
+        <!--        <label>花旗账号:</label>
         <button v-if="!isBinded" v-on:click="displayPartsForBind">
           去绑定
         </button>
@@ -31,8 +32,8 @@
 
 <script>
 // 请求数据已被封装
-import { getAccountInfo, bindCitiAccount } from '../network/Account'
-
+import { bindCitiAccount } from '../network/Account'
+import HeaderBar from './HeaderBar'
 import dummyAccount from '../dummy/accountInfo.json'
 import InfoBar from './InfoBar'
 
@@ -40,7 +41,6 @@ async function getDummyInfo() {
   return dummyAccount
 }
 
-import HeaderBar from './HeaderBar'
 
 export default {
   name: 'Account',
@@ -68,18 +68,20 @@ export default {
           key: 'c2',
           render: (h, params) => {
             if (params.index < 4 || this.isBinded) {
-              return h('span', params.row.c2);
-            }
-            else {
-              return h('Button', {
-                props: {
-                },
-                on: {
-                  click: () => {
-                    this.displayPartsForBind();
+              return h('span', params.row.c2)
+            } else {
+              return h(
+                'Button',
+                {
+                  props: {},
+                  on: {
+                    click: () => {
+                      this.displayPartsForBind()
+                    }
                   }
-                }
-              }, '去绑定');
+                },
+                '去绑定'
+              )
             }
           }
         }
@@ -113,46 +115,35 @@ export default {
     InfoBar
   },
   computed: {
-    tbdata: function() {
-      let tbdata = [];
-      tbdata.push({
-        c1: '姓',
-        c2: this.firstName
-      });
-      tbdata.push({
-        c1: '名',
-        c2: this.lastName
-      });
-      tbdata.push({
-        c1: '电子邮箱',
-        c2: this.email
-      });
-      tbdata.push({
-        c1: '地址',
-        c2: this.address
-      });
-      tbdata.push({
-        c1: '花旗账号',
-        c2: this.citiAccount
-      });
-      return tbdata;
+    tbdata: function () {
+      const friendlyNames = [
+        { prop: 'firstName', friendlyName: '性' },
+        { prop: 'lastName', friendlyName: '名' },
+        { prop: 'email', friendlyName: '电子邮箱' },
+        { prop: 'address', friendlyName: '地址' },
+        { prop: 'citiAccount', friendlyName: '花旗帐号' }
+      ]
+      return friendlyNames.map(({ prop, friendlyName }) => {
+        return { c1: friendlyName, c2: this[prop] }
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-  * {
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  }
-  .titletext {
-    font-size: 24px;
-    color: #2b85e4;
-    text-align: center;
-    letter-spacing: 10px;
-    font-weight: 500;
-  }
-  .showform {
-    margin: 20px 40px;
-  }
+* {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+.titletext {
+  font-size: 24px;
+  color: #2b85e4;
+  text-align: center;
+  letter-spacing: 10px;
+  font-weight: 500;
+}
+.showform {
+  margin: 20px 40px;
+}
 </style>
