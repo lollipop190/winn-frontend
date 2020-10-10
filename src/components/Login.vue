@@ -12,7 +12,7 @@
         <FormItem prop="user" label="用户名">
           <Input type="text"
             v-model="loginform.user"
-            placeholder="Username"
+            placeholder="请输入用户名"
             clearable
             maxlength="20">
             <Icon type="ios-person-outline" slot="prepend"></Icon>
@@ -21,7 +21,7 @@
         <FormItem prop="pw" label="密码">
           <Input type="password"
             v-model="loginform.pw"
-            placeholder="Password"
+            placeholder="请输入密码"
             clearable
             maxlength="20">
             <Icon type="ios-lock-outline" slot="prepend"></Icon>

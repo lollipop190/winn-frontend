@@ -5,10 +5,17 @@
     <Modal
       v-model="bindPartDisplayed"
       title="花旗账号绑定"
-      @on-ok="modal_ok"
-      @on-cancel="modal_cancel">
+      ref="bindPartDisplayed"
+      width=400
+      footer-hide>
+      <!-- header -->
+      <p slot="header" style="color:#2B85E4;text-align:center;font-size:18px;">
+        <Icon type="ios-information-circle"></Icon>
+        <span>花旗账号绑定</span>
+      </p>
       <!-- Content -->
       <Form
+      class="bindform"
       :model="formMess"
       label-position="left"
       ref="formMess"
@@ -17,7 +24,7 @@
         <FormItem prop="account" label="用户名">
           <Input type="text"
             v-model="formMess.account"
-            placeholder="Username"
+            placeholder="请输入用户名"
             clearable
             maxlength="20">
             <!-- <Icon type="ios-person-outline" slot="prepend"></Icon> -->
@@ -26,12 +33,18 @@
         <FormItem prop="password" label="密码">
           <Input type="password"
             v-model="formMess.password"
-            placeholder="Password"
+            placeholder="请输入密码"
             clearable
             maxlength="20">
             <!-- <Icon type="ios-lock-outline" slot="prepend"></Icon> -->
           </Input>
         </FormItem>
+        <div class="form-btn-div">
+          <Button class="form-btn-ok" type="primary" @click="modal_ok">确认</Button>
+          <Button class="form-btn-cancel" type="primary" @click="modal_cancel">取消</Button>
+          <!-- 撑开盒子 -->
+          <Button style="visibility: hidden;"></Button>
+        </div>
       </Form>
     </Modal>
     <form class="showform">
@@ -142,11 +155,22 @@ export default {
 
     // For Modal use
     modal_ok() {
-      this.$Message.success('成功!');
-      this.hidePartsAndSetBinded();
+      this.$refs['formMess'].validate((valid) => {
+        if (valid) {
+          this.$Message.success('成功!');
+          this.$refs['bindPartDisplayed'].close();
+          // Todo: 成功逻辑
+          this.hidePartsAndSetBinded();
+
+        } else {
+          this.$Message.error('失败!');
+
+        }
+      })
     },
     modal_cancel() {
       this.$refs['formMess'].resetFields();
+      this.$refs['bindPartDisplayed'].close();
     }
   },
   components: {
@@ -183,8 +207,16 @@ export default {
 </script>
 
 <style scoped>
-  * {
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  .clearfix:before,
+  .clearfix:after {
+    content: '';
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+  }
+  .clearfix {
+    *zoom: 1;
   }
   .titletext {
     font-size: 24px;
@@ -195,5 +227,19 @@ export default {
   }
   .showform {
     margin: 20px 40px;
+  }
+  .bindform .form-btn-div {
+    margin-bottom: 0px;
+    position: relative;
+  }
+  .bindform .form-btn-ok {
+    width: 150px;
+    position: absolute;
+    left: 20px;
+  }
+  .bindform .form-btn-cancel {
+    width: 150px;
+    position: absolute;
+    right: 20px;
   }
 </style>
