@@ -2,6 +2,38 @@
   <div id="info">
     <header-bar></header-bar>
     <div><p class="titletext">账户信息</p></div>
+    <Modal
+      v-model="bindPartDisplayed"
+      title="花旗账号绑定"
+      @on-ok="modal_ok"
+      @on-cancel="modal_cancel">
+      <!-- Content -->
+      <Form
+      :model="formMess"
+      label-position="left"
+      ref="formMess"
+      :label-width="70"
+      :rules="bindrule">
+        <FormItem prop="account" label="用户名">
+          <Input type="text"
+            v-model="formMess.account"
+            placeholder="Username"
+            clearable
+            maxlength="20">
+            <!-- <Icon type="ios-person-outline" slot="prepend"></Icon> -->
+          </Input>
+        </FormItem>
+        <FormItem prop="password" label="密码">
+          <Input type="password"
+            v-model="formMess.password"
+            placeholder="Password"
+            clearable
+            maxlength="20">
+            <!-- <Icon type="ios-lock-outline" slot="prepend"></Icon> -->
+          </Input>
+        </FormItem>
+      </Form>
+    </Modal>
     <form class="showform">
       <Table
         stripe
@@ -13,17 +45,6 @@
           <strong style="color: #035bc6;">{{ row.c1 }}</strong>
         </template>
       </Table>
-      <div id="citi-account">
-<!--        <label>花旗账号:</label>
-        <button v-if="!isBinded" v-on:click="displayPartsForBind">
-          去绑定
-        </button>
-        <span v-if="isBinded">{{ citiAccount }}</span> -->
-        <div v-if="bindPartDisplayed">
-          此处为花旗用户绑定
-          <button v-on:click="hidePartsAndSetBinded">确认</button>
-        </div>
-      </div>
     </form>
     <info-bar></info-bar>
   </div>
@@ -53,6 +74,10 @@ export default {
       citiAccount: null,
       bindPartDisplayed: false,
       isBinded: false,
+      formMess:{
+        "account":"",
+        "password":""
+      },
 
       // For table use
       showheader: false,
@@ -73,6 +98,7 @@ export default {
             else {
               return h('Button', {
                 props: {
+
                 },
                 on: {
                   click: () => {
@@ -83,7 +109,12 @@ export default {
             }
           }
         }
-      ]
+      ],
+      // For Modal use
+      bindrule: {
+        account: [{ required: true, message: '用户名不能为空！', trigger: 'blur' }],
+        password: [{ required: true, message: '密码不能为空！', trigger: 'blur' }]
+      }
     }
   },
   created: function () {
@@ -101,11 +132,21 @@ export default {
     displayPartsForBind() {
       this.bindPartDisplayed = true
     },
-    hidePartsAndSetBinded() {
-      this.bindPartDisplayed = false
-      this.isBinded = true
-      // todo 获取用户输入的花旗用户数据
-      bindCitiAccount('citi account')
+    hidePartsAndSetBinded(){
+      let formData = JSON.stringify(this.formMess);
+      this.bindPartDisplayed = false;
+      this.isBinded = true;
+      //提交数据
+      bindCitiAccount(formData);
+    },
+
+    // For Modal use
+    modal_ok() {
+      this.$Message.success('成功!');
+      this.hidePartsAndSetBinded();
+    },
+    modal_cancel() {
+      this.$refs['formMess'].resetFields();
     }
   },
   components: {
