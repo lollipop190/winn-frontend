@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-  <Account/>
+<!--  <Account/>-->
   </div>
 
 </template>
@@ -11,9 +11,9 @@ import Account from './components/AccountComps/Account'
 
 export default {
   name: 'App',
-  components:{
-    Account
-  }
+  // components:{
+  //   Account
+  // }
 }
 </script>
 
