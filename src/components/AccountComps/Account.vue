@@ -32,8 +32,13 @@
         <button v-if="!isBinded" v-on:click="displayPartsForBind">去绑定</button>
         <span v-if="isBinded">{{citiAccount}}</span>
         <div v-if="bindPartDisplayed">
-          此处为花旗用户绑定
-          <button v-on:click="hidePartsAndSetBinded">确认</button>
+            <form action="">
+              <input type="text"  placeholder="请输入用户名" v-model="formMess.account"><br>
+              <input type="password" placeholder="请输入密码" v-model="formMess.password"><br>
+              <!--这里不确定是否还有其他数据，若有可以继续添加-->
+            </form>
+            <Button><span class="but" @click="hidePartsAndSetBinded">提交</span></Button>
+<!--          <button v-on:click="hidePartsAndSetBinded">确认</button>-->
         </div>
       </div>
     </form>
@@ -56,7 +61,11 @@
         cardInfo : 'ABC',
         citiAccount : 'citi',
         isBinded: false, //判断是否绑定了花旗账户
-        bindPartDisplayed: false
+        bindPartDisplayed: false,
+        formMess:{
+          "account":"",
+          "password":""
+        }
       }
     },
     created () {
@@ -72,10 +81,11 @@
         this.bindPartDisplayed = true;
       },
       hidePartsAndSetBinded(){
+        let formData = JSON.stringify(this.formMess);
         this.bindPartDisplayed = false;
         this.isBinded = true;
-        //todo 获取用户输入的花旗用户数据
-        bindCitiAccount("citi account");
+        //提交数据
+        bindCitiAccount(formData);
       }
     }
   }
