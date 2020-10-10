@@ -33,19 +33,17 @@
         <span v-if="isBinded">{{citiAccount}}</span>
         <div v-if="bindPartDisplayed">
             <form action="">
-              <input type="text"  placeholder="请输入用户名" v-model="formMess.account"><br>
-              <input type="password" placeholder="请输入密码" v-model="formMess.password"><br>
-              <!--这里不确定是否还有其他数据，若有可以继续添加-->
+              <input type="text"  placeholder="cilent_id" v-model="formMess.cilent_id"><br>
+              <input type="text"  placeholder="redirect_url" v-model="formMess.redirect_url"><br>
+
             </form>
             <Button><span class="but" @click="hidePartsAndSetBinded">提交</span></Button>
-<!--          <button v-on:click="hidePartsAndSetBinded">确认</button>-->
         </div>
       </div>
     </form>
   </div>
 </template>
 <script>
-//请求数据已被封装
   import {getAccountInfo, bindCitiAccount} from '../../network/Account'
   export default {
     name: 'Account',
@@ -63,8 +61,14 @@
         isBinded: false, //判断是否绑定了花旗账户
         bindPartDisplayed: false,
         formMess:{
-          "account":"",
-          "password":""
+          response_type:"code",
+          cilent_id:"",
+          scope:"accounts_details_transaction",
+          countryCode:"CH",//china?
+          businessCode:"GCB",
+          locale:"en_US",
+          state:"12093",
+          redirect_url:""
         }
       }
     },
@@ -81,11 +85,12 @@
         this.bindPartDisplayed = true;
       },
       hidePartsAndSetBinded(){
-        let formData = JSON.stringify(this.formMess);
+        // let formData = JSON.stringify(this.formMess);
+        // this.formMess.
         this.bindPartDisplayed = false;
         this.isBinded = true;
         //提交数据
-        bindCitiAccount(formData);
+        bindCitiAccount(this.formMess);
       }
     }
   }

@@ -4,22 +4,17 @@ const apiPath = '/api/v1/account/info'
 export function getAccountInfo () {
     return request({
       url: apiPath,
-
     })
 }
 export function bindCitiAccount (formData) {
   axios({
-    method:"post",
-    url:"api/account/bind",
-    headers: {
-      "Cookie: session-id=${value}": "require",
-      "Content-Type: string" : "require",
-      "Uuid: string" : "require"
-    },
+    method:"get",
+    url:"https://sandbox.apihub.citi.com/gcb/api/authCode/oauth2/authorize",
     withCredentials:true,
-    data:formData
+    params:formData
   }).then((res)=>{
     console.log(res);
+    //todo
   });
 
 }

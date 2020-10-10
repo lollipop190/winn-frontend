@@ -5,18 +5,25 @@ export function request (config) {
     timeout: 5000
   })
 
-  instance.interceptors.request.use(config=>{
-    return config
-  }, error => {
+  // instance.interceptors.request.use(config=>{
+  //   return config
+  // }, error => {
+  //
+  // })
+  //
+  // instance.interceptors.request.use(res =>{
+  //   return res.data
+  // }, error => {
+  //   console.log(error);
+  // })
 
+  return instance(config);
+}
+
+export function citiAccountBind (config) {
+  const instance = axios.create({
+    timeout: 5000
   })
-
-  instance.interceptors.request.use(res =>{
-    return res.data
-  }, error => {
-    console.log(error);
-  })
-
   return instance(config);
 }
 
